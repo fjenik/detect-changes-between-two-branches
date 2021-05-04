@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Detect changes between master and develop
         id: "detect-changes-between-master-and-develop"
-        uses: fjenik/detect-changes-between-two-branches@0.0.1
+        uses: fjenik/detect-changes-between-two-branches@0.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: main

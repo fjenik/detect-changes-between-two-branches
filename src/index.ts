@@ -33,9 +33,11 @@ async function run() {
       head: sourceBranch,
     })
     if (data.ahead_by !== 0) {
+      core.info(`${sourceBranch} is ahead ${targetBranch}.`)
       core.setOutput(IS_SOURCE_BRANCH_AHEAD, 'true');
       return
     }
+
   } catch (error) {
     core.setFailed(error.message)
   }
