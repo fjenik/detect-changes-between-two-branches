@@ -36,7 +36,6 @@ async function run() {
       core.setOutput(IS_SOURCE_BRANCH_AHEAD, 'true');
       return
     }
-
   } catch (error) {
     core.setFailed(error.message)
   }
