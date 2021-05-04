@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  create-master-to-develop-pr:
+    runs-on: ubuntu-latest
+    name: Create pull request from master to develop
+    steps:
+      - name: Detect changes between master and develop
+        id: "detect-changes-between-master-and-develop"
+        uses: fjenik/detect-changes-between-two-branches@0.0.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          target-branch: main
+          source-branch: develop
+
+      - name: Create pull request
+        if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' }}
+        uses: fjenik/create-pull-request@0.0.2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          target-branch: main
+          source-branch: develop
+          pr-body: "Auto-generated pr"
+          pr-title: "Merge master to develop"

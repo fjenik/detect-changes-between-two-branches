@@ -1,0 +1,22 @@
+name: "detect-changes-in-two-branches"
+description: "Detect changes between two branches"
+author: "Filip Jenik"
+icon: "bookmark"
+color: "yellow"
+inputs:
+  repo-token:
+    description: "The GITHUB_TOKEN secret"
+    required: true
+  source-branch:
+    description: "Source branch"
+    required: true
+  target-branch:
+    description: "Target branch"
+    required: true
+outputs:
+  is-source-ahaed-of-target:
+    description: "Is source branch ahead of target branch"
+
+runs:
+  using: "node12"
+  main: "dist/index.js"
