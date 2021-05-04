@@ -22,5 +22,5 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: main
           source-branch: develop
-          pr-body: "Auto-generated pr"
+          pr-body: "Auto-generated pull request"
           pr-title: "Merge master to develop"
