@@ -15,6 +15,9 @@ jobs:
           target-branch: main
           source-branch: develop
 
+       - name: Print output
+        run: echo "Output of detect changes ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead }}"
+
       - name: Create pull request
         if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' }}
         uses: fjenik/create-pull-request@0.0.2
