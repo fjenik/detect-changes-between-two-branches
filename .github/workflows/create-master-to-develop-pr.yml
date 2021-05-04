@@ -12,8 +12,8 @@ jobs:
         uses: fjenik/detect-changes-between-two-branches@0.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          target-branch: main
-          source-branch: develop
+          target-branch: develop
+          source-branch: main
 
       - name: Print output
         run: echo "Output of detect changes ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead }}"
@@ -23,7 +23,7 @@ jobs:
         uses: fjenik/create-pull-request@0.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          target-branch: main
-          source-branch: develop
+          target-branch: develop
+          source-branch: main
           pr-body: "Auto-generated pull request"
           pr-title: "Merge master to develop"
