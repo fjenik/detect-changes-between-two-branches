@@ -26,8 +26,6 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
           source-branch: main
-          pr-body: "Auto-generated pull request"
-          pr-title: "Merge master to develop"
 
       - name: Create pull request
         if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' && steps.check-if-pr-already-exists.is-pr-already-created == 'false' }}
