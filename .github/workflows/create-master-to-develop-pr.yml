@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Detect changes between master and develop
         id: "detect-changes-between-master-and-develop"
-        uses: fjenik/detect-changes-between-two-branches@0.0.2
+        uses: fjenik/detect-changes-between-two-branches@0.0.3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
@@ -31,7 +31,7 @@ jobs:
 
       - name: Create pull request
         if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' && steps.check-if-pr-already-exists.is-pr-already-created == 'false' }}
-        uses: fjenik/create-pull-request@0.0.3
+        uses: fjenik/create-pull-request@0.0.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
