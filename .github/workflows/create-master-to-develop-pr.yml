@@ -28,7 +28,7 @@ jobs:
           source-branch: main
 
       - name: Print output
-        run: echo "Output of pr already exists ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created }}"
+        run: echo "Output of pul request already exists ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created }}"
 
       - name: Create pull request
         if: ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created == 'false' }}
