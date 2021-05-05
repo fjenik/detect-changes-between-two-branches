@@ -12,19 +12,6 @@ async function run() {
 
   try {
     core.setOutput(IS_SOURCE_BRANCH_AHEAD, 'false');
-    const { data: pulls } = await client.pulls.list({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
-      state: 'open',
-    })
-    const masterToDevelopPr = pulls.find(
-      ({ head, base }) => head.ref === sourceBranch && base.ref === targetBranch
-    )
-    if (masterToDevelopPr) {
-      // PR from {{ sourceBranch }} to {{ targetBranch }} already exists
-      // test
-      return
-    }
     // check if {{ sourceBranch }} is ahead {{ targetBranch }}
     const { data } = await client.repos.compareCommits({
       owner: github.context.repo.owner,
