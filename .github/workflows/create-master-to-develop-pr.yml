@@ -9,18 +9,33 @@ jobs:
     steps:
       - name: Detect changes between master and develop
         id: "detect-changes-between-master-and-develop"
-        uses: fjenik/detect-changes-between-two-branches@0.0.1
+        uses: fjenik/detect-changes-between-two-branches@0.0.3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          target-branch: main
-          source-branch: develop
+          target-branch: develop
+          source-branch: main
+
+      - name: Print output
+        run: echo "Output of detect changes ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead }}"
+
+      - name: Check if pr already exists
+        id: "check-if-pr-already-exists"
+        if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' }}
+        uses: fjenik/check-if-pr-exists@0.0.3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          target-branch: develop
+          source-branch: main
+
+      - name: Print output
+        run: echo "Output of pr already exists ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created }}"
 
       - name: Create pull request
-        if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' }}
+        if: ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created == 'false' }}
         uses: fjenik/create-pull-request@0.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          target-branch: main
-          source-branch: develop
-          pr-body: "Auto-generated pr"
+          target-branch: develop
+          source-branch: main
+          pr-body: "Auto-generated pull request"
           pr-title: "Merge master to develop"

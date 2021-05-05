@@ -47,17 +47,6 @@ function run() {
         const client = github.getOctokit(token);
         try {
             core.setOutput(IS_SOURCE_BRANCH_AHEAD, 'false');
-            const { data: pulls } = yield client.pulls.list({
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
-                state: 'open',
-            });
-            const masterToDevelopPr = pulls.find(({ head, base }) => head.ref === sourceBranch && base.ref === targetBranch);
-            if (masterToDevelopPr) {
-                // PR from {{ sourceBranch }} to {{ targetBranch }} already exists
-                // test
-                return;
-            }
             // check if {{ sourceBranch }} is ahead {{ targetBranch }}
             const { data } = yield client.repos.compareCommits({
                 owner: github.context.repo.owner,
