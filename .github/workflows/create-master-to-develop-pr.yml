@@ -28,8 +28,8 @@ jobs:
           source-branch: main
 
       - name: Create pull request
-        if: ${{ steps.detect-changes-between-master-and-develop.outputs.is-source-branch-ahead == 'true' && steps.check-if-pr-already-exists.is-pr-already-created == 'false' }}
-        uses: fjenik/create-pull-request@0.0.1
+        if: ${{ steps.check-if-pr-already-exists.is-pr-already-created == 'false' }}
+        uses: fjenik/create-pull-request@0.0.3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
