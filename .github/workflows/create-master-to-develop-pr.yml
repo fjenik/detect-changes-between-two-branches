@@ -37,7 +37,12 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
           source-branch: main
-          pr-body: "Auto-generated pull request"
+          pr-body: |
+            _This PR was generated via github actions workflow to keep `develop` always in sync with `master` branch_
+
+            Please review and merge.
+
+            **Don't squash merge this PR**
           pr-title: "Merge master to develop"
           pr-labels: |
             duplicate
