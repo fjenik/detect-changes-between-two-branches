@@ -32,7 +32,7 @@ jobs:
 
       - name: Create pull request
         if: ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created == 'false' }}
-        uses: fjenik/create-pull-request@0.0.10
+        uses: fjenik/create-pull-request@0.0.11
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
