@@ -45,8 +45,10 @@ jobs:
           target-branch: develop
           source-branch: main
           pr-body: |
-            Merging into '%basebranch%'
-            [Link to %headbranch%](https://url/to/browse/ticket/%headbranch%)
+            _This PR was generated via github actions workflow to keep `develop` always in sync with `master` branch_
+            Please review and merge.
+
+            **Don't squash merge this PR**"
           pr-title: "Merge master to develop"
           pr-labels: |
             duplicate
