@@ -34,6 +34,9 @@ jobs:
         id: get-template
         run: echo "::set-output name=template::$(cat prbody.md)"
 
+      - name: Print
+        run: echo "Output of get template ${{ steps.get-template.outputs.template }}"
+
       - name: Create pull request
         if: ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created == 'false' }}
         uses: fjenik/create-pull-request@0.0.12
