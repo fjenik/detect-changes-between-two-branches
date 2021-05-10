@@ -32,7 +32,7 @@ jobs:
 
       - name: Get template
         id: get-template
-        run: echo "::set-output name=template::$(cat ./prbody.md)"
+        run: echo "::set-output name=template::$(cat ./prbody)"
 
       - name: Print
         run: echo "Output of get template ${{ steps.get-template.outputs.template }}"
