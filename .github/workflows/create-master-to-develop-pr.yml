@@ -39,3 +39,12 @@ jobs:
           source-branch: main
           pr-body: "Auto-generated pull request"
           pr-title: "Merge master to develop"
+          pr-labels: |
+            duplicate
+            bug
+            invalid
+          pr-assignees: |
+            fjenik
+          pr-reviewers: |
+            fjenik
+            michalvankodev
