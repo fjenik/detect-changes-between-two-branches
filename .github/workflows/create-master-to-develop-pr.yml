@@ -32,15 +32,10 @@ jobs:
 
       - name: Create pull request
         if: ${{ steps.check-if-pr-already-exists.outputs.is-pr-already-created == 'false' }}
-        uses: fjenik/create-pull-request@0.0.7
+        uses: fjenik/create-pull-request@0.0.8
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
           source-branch: main
           pr-body: "Auto-generated pull request"
           pr-title: "Merge master to develop"
-          pr-assignees: |
-            fjenik
-          pr-reviewers: |
-            fjenik
-            michalvankodev
