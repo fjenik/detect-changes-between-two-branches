@@ -44,7 +44,9 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: develop
           source-branch: main
-          pr-body: ${{ steps.get-template.outputs.template }}
+          pr-body: |
+            Merging into '%basebranch%'
+            [Link to %headbranch%](https://url/to/browse/ticket/%headbranch%)
           pr-title: "Merge master to develop"
           pr-labels: |
             duplicate
